@@ -54,18 +54,21 @@
 							<label class="control-label" for="inputEmail">E-mail
 								address</label>
 							<div class="controls">
+								<i class="fa fa-envelope" style="font-size:23px;color:black"></i>
 								<form:input type="email" class="span3" placeholder="Email" path="user" />  
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="inputEmail">Password</label>
 							<div class="controls">
-								<form:input type="password" class="span3" placeholder="Pasword" path="password" /> 
+							 <i class="fa fa-key icon" style="font-size:23px;color:black"></i>
+								<form:input type="password" class="span3" placeholder="Password" path="password" /> 
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="inputEmail">Name</label>
 							<div class="controls">
+								<i class="fa fa-user icon" style="font-size:23px;color:black"></i>
 								<form:input type="text" class="span3" placeholder="Name" path="display_name" />
 								
 							</div>
@@ -73,6 +76,7 @@
 						<div class="control-group">
 							<label class="control-label" for="inputEmail">Address</label>
 							<div class="controls">
+								<i class="fas fa-address-card" style="font-size:23px;color:black"></i>
 								<form:input type="text" class="span3" placeholder="Address" path="Address" />
 							</div>
 						</div>
@@ -87,17 +91,20 @@
 			<div class="span4"style="width: 500px">
 				<div class="well">
 					<h5>ALREADY REGISTERED ?</h5>
-					<form>
+					<h3 style="color: red">${ statusLogin }</h3>
+					<form:form action="Signin" method="POST" modelAttribute="user">  
 						<div class="control-group">
 							<label class="control-label" for="inputEmail">Email</label>
 							<div class="controls">
-								<input class="span3" type="text" placeholder="Email">
+							<i class="fa fa-envelope" style="font-size:23px;color:black"></i>
+								<form:input type="email" class="span3" placeholder="Email" path="user" /> 
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="inputPassword">Password</label>
 							<div class="controls">
-								<input type="password" class="span3" placeholder="Password">
+							<i class="fa fa-key" style="font-size:23px;color:black"></i>
+								<form:input type="password" class="span3" placeholder="Password" path="password" />
 							</div>
 						</div>
 						<div class="control-group">
@@ -106,7 +113,7 @@
 								<a href="#">Forget password?</a>
 							</div>
 						</div>
-					</form>
+					</form:form>
 				</div>
 			</div>
 		</div>
@@ -115,6 +122,7 @@
 	</div>
 
 	<!-- Placed at the end of the document so the pages load faster -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src=<c:url value="/assets/user/js/js/jsGrid/jquery.js"/>></script>
 	<script src=<c:url value="/assets/user/js/js/bootstrap.min.js"/>></script>
 	<script

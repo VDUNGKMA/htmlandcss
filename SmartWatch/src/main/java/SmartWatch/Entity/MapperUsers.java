@@ -3,9 +3,9 @@ package SmartWatch.Entity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.cj.xdevapi.Result;
+import org.springframework.jdbc.core.RowMapper;
 
-public class MapperUsers {
+public class MapperUsers implements RowMapper<Users> {
 
 	public Users mapRow(ResultSet rs,int rowNum) throws SQLException{
 		

@@ -1,7 +1,11 @@
 package SmartWatch.Dao;
 
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import SmartWatch.Dto.ProductsDto;
+import SmartWatch.Dto.ProductsDtoMapper;
+import SmartWatch.Entity.MapperUsers;
 import SmartWatch.Entity.Users;
 @Repository
 public class UsersDao extends BaseDao {
@@ -25,4 +29,11 @@ public class UsersDao extends BaseDao {
 			int insert =_jdbcTemplate.update(sql.toString());
 			return insert;
 		};
+		
+		public Users GetUserByAcc(Users user) {
+			
+			String sql = "SELECT * FROM users WHERE user='"+user.getUser()+"'";
+			Users result =_jdbcTemplate.queryForObject(sql, new MapperUsers());
+				return result;
+			};
 	}

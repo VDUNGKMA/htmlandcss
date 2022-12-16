@@ -46,7 +46,13 @@
 						</c:forEach>
 					</ul>
 					<div class="user_option-box">
+						<c:if test="${ empty LoginInfo }">
 						<a href="<c:url value="/Signup"/>"> <i class="fa fa-user" aria-hidden="true"></i>
+						</c:if>
+						<c:if test="${ not empty LoginInfo }">
+						<a href="#"> <i class="fa fa-user" aria-hidden="true"></i>  ${ LoginInfo.display_name }</a>
+						<a href="<c:url value="/Logout"/>"> <i class="fa fa-sign-out" aria-hidden="true"></i>
+						</c:if>
 						<a href="<c:url value="/ListCart"/>"><span class="fa fa-cart-plus"></span> ${ TotalQuantyCart } </a> - <span class="badge badge-warning"> 
 						 <fmt:formatNumber type="number" groupingUsed="true" />${ TotalPriceCart }₫</span></a>
 						</a> <a href=""> <i class="fa fa-search" aria-hidden="true"></i>
