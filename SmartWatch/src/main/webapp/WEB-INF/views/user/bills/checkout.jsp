@@ -74,6 +74,12 @@
 								</div>
 							</div>
 							<div class="control-group">
+								<label class="control-label">Note <sup>*</sup></label>
+								<div class="controls">
+									<form:textarea path="note" row="5" cols="30"/>
+								</div>
+							</div>
+							<div class="control-group">
 								<div class="controls">
 									<input type="submit" name="submitAccount" value="Register"
 										class="shopBtn exclusive">

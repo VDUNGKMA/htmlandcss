@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import SmartWatch.Dao.ProductsDao;
 import SmartWatch.Dto.CartDto;
 import SmartWatch.Entity.Bills;
+import SmartWatch.Entity.Users;
+import SmartWatch.Service.User.BillsServiceImpl;
 import SmartWatch.Service.User.CartServiceImpl;
 
 @Controller
@@ -25,6 +27,8 @@ public class CartController extends BaseController {
 	private CartServiceImpl cartService=new CartServiceImpl();
 	@Autowired
 	ProductsDao productsDao;
+	@Autowired
+	private BillsServiceImpl billsService =new BillsServiceImpl();
 	@RequestMapping(value="ListCart")
 	public ModelAndView Index() {
 		_mvShare.addObject("slides",_homeService.GetDataSlides());
@@ -43,7 +47,6 @@ public class CartController extends BaseController {
 		session.setAttribute("Cart", cart);
 		session.setAttribute("TotalQuantyCart", cartService.TotalQuanty(cart));
 		session.setAttribute("TotalPriceCart", cartService.TotalPrice(cart));
-	//	return "redirect:/product_detail/"+id;
 		return "redirect:"+request.getHeader("Referer");
 		
 	}
@@ -77,14 +80,27 @@ public class CartController extends BaseController {
 	@RequestMapping(value="checkout", method = RequestMethod.GET)
 	public ModelAndView Checkout(HttpServletRequest request ,HttpSession session) {
 		_mvShare.setViewName("user/bills/checkout");
-		_mvShare.addObject("bills", new Bills());
+		Bills bills =new Bills();
+		Users loginInfo = (Users)session.getAttribute("LoginInfo");
+		if(loginInfo != null) {
+			bills.setAddress(loginInfo.getAddress());
+			bills.setDisplay_name(loginInfo.getDisplay_name());
+			bills.setUser(loginInfo.getUser());
+		}
+		_mvShare.addObject("bills", bills);
+		
 		return _mvShare;
 		
 	}
 	@RequestMapping(value="checkout", method = RequestMethod.POST)
-	public ModelAndView Checkout(HttpServletRequest request ,HttpSession session, @ModelAttribute("bills") Bills bills) {
-		_mvShare.setViewName("user/bills/checkout");
-		return _mvShare;
+	public String CheckOutBill(HttpServletRequest request ,HttpSession session, @ModelAttribute("bills") Bills bills) {
+		if(billsService.AddBills(bills) > 0) {
+			HashMap<Long, CartDto> carts =(HashMap<Long, CartDto>)session.getAttribute("Cart");
+			billsService.AddBillsDetail(carts);
+		}
+		session.removeAttribute("Cart");
+		
+		return "redirect:ListCart";
 		
 	}
 	

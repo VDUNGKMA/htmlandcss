@@ -3,6 +3,7 @@ package SmartWatch.Entity;
 public class BillDetail {
 	private long id;
 	private long id_product;
+	private long id_bills;
 	private int  quanty;
 	private double total;
 	public BillDetail() {
@@ -31,6 +32,12 @@ public class BillDetail {
 	}
 	public void setTotal(double total) {
 		this.total = total;
+	}
+	public long getId_bills() {
+		return id_bills;
+	}
+	public void setId_bills(long id_bills) {
+		this.id_bills = id_bills;
 	}
 	
 	

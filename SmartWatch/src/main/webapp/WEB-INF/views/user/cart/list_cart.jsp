@@ -46,7 +46,7 @@ Lower Header Section
 		<div class="row">
 			<div class="span12">
 				<ul class="breadcrumb">
-					<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+					<li><a href="<c:url value="/"/>">Home</a> <span class="divider">/</span></li>
 					<li class="active">Giỏ Hàng</li>
 				</ul>
 				<div class="well well-small">
@@ -102,9 +102,9 @@ Lower Header Section
 								</c:forEach>
 						</tbody>
 					</table>
-					<br /> <a href="products.html" class="shopBtn btn-large"><span
+					<br /> <a href="<c:url value="/products"/>" class="shopBtn btn-large"><span
 						class="icon-arrow-left"></span> Tiếp tục mua sắm </a> <a
-						href="login.html" class="shopBtn btn-large pull-right">Thanh
+						href="<c:url value="/checkout"/>" class="shopBtn btn-large pull-right">Thanh
 						Toán<span class="icon-arrow-right"></span>
 					</a>
 

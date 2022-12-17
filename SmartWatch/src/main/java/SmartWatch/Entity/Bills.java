@@ -4,7 +4,6 @@ public class Bills {
 	private long id;
 	private String user;
 	private String phone;
-	private String password;
 	private String display_name;
 	private String address;
 	private double total;
@@ -30,12 +29,6 @@ public class Bills {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public String getDisplay_name() {
 		return display_name;
